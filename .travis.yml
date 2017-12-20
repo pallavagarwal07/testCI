@@ -1,0 +1,12 @@
+sudo: required
+os: linux
+
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install -y tmate bash curl
+
+script:
+    - tmate -S /tmp/tmate.sock new-session -d
+    - tmate -S /tmp/tmate.sock wait tmate-ready
+    - tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
+    - ping 8.8.8.8
